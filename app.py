@@ -2,9 +2,20 @@ from flask import Flask, redirect, render_template
 app = Flask(__name__)
 
 
-@app.route('/hello/')
-def hello(name=None):
-   return render_template('hello.html', name=name)
+#@app.route('/hello/')
+#def hello(name=None):
+#   return render_template('hello.html', name=name)
+
+@app.route('/')
+def index():
+    return redirect(url_for('static', filename='index.html'))
+
+
+@app.route('/site<num>')
+def site(num):
+    # Works for /site01, /site02, /site03, etc.
+    return render_template('site{0}.html'.format(num))
+
 
 #@app.route('/login', methods=['POST', 'GET'])
 #def login():
