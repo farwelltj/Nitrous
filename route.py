@@ -1,19 +1,14 @@
-from flask import Flask, redirect, render_template, url_for
-
-
+from flask import Flask, render_template
+  
 app = Flask(__name__)
-
-
+  
 @app.route('/')
-def index():
-    return redirect(url_for('static', filename='index.html'))
-
-
-@app.route('/site<num>')
-def site(num):
-    # Works for /site01, /site02, /site03, etc.
-    return render_template('site{0}.html'.format(num))
-
-
+def home():
+  return render_template('home.html')
+  
+@app.route('/about')
+def about():
+  return render_template('about.html')
+  
 if __name__ == '__main__':
-    app.run(debug=True)
+  app.run(debug=True)
